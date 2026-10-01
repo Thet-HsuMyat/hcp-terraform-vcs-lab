@@ -4,6 +4,13 @@ resource "aws_s3_bucket" "lab" {
   tags = {
     Name        = "HCP Terraform VCS Lab"
     Environment = "learning"
-    ManagedBy = "Terraform"
+    ManagedBy   = "Terraform"
+  }
+}
+resource "aws_s3_bucket_versioning" "lab" {
+  bucket = aws_s3_bucket.lab.id
+
+  versioning_configuration {
+    status = "Enabled"
   }
 }
